@@ -3,6 +3,7 @@ import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { FormatoArchivo } from '../models/FormatoArchivo';
 import { Subject } from 'rxjs';
+import { ConsultarFormatoArchivoDTO } from '../models/ConsultarFormatoArchivoDTO';
 
 const base_url = environment.base
 
@@ -40,5 +41,9 @@ export class FormatoarchivoService {
 
   deletefA(id:number){
     return this.http.delete(`${this.url}/${id}`)
+  }
+
+  consultarFormatoArchivo(){
+    return this.http.get<ConsultarFormatoArchivoDTO[]>(`${this.url}/FormatosDocx`)
   }
 }
