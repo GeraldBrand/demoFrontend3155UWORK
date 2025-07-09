@@ -28,25 +28,4 @@
   align-items: center;
 }
 
-/* Canvas del gráfico */
-canvas {
-  max-width: 100% !important;
-  height: auto !important;
-  width: auto !important;
-}
 
-/* Responsive para pantallas pequeñas */
-@media screen and (max-width: 768px) {
-  .title-container {
-    padding: 16px;
-    margin: 1rem;
-  }
-
-  .title h1 {
-    font-size: 1.4rem;
-  }
-
-  .chart-container {
-    padding: 0.5rem;
-  }
-}
