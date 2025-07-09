@@ -41,8 +41,7 @@ export class MensajeService {
     deleteM(id:number) {
       return this.http.delete(`${this.url}/${id}`);
     }
-    buscarContenido(contenido: string){
-      const params = new HttpParams().set('contenido', contenido)
+    buscarContenido(){
       return this.http.get<BuscarContenidoDTO[]>(`${this.url}/BuscarContenido`)
     }
 
