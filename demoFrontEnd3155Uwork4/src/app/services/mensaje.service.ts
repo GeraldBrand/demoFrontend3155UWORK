@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { Subject } from 'rxjs';
 import { Mensaje } from '../models/Mensaje';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { BuscarContenidoDTO } from '../models/BuscarContenidoDTO';
 
 const base_url = environment.base;
 
@@ -39,6 +40,10 @@ export class MensajeService {
     }
     deleteM(id:number) {
       return this.http.delete(`${this.url}/${id}`);
+    }
+    buscarContenido(contenido: string){
+      const params = new HttpParams().set('contenido', contenido)
+      return this.http.get<BuscarContenidoDTO[]>(`${this.url}/BuscarContenido`)
     }
 
 }
