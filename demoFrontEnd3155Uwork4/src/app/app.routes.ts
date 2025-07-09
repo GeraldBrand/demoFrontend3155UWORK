@@ -39,6 +39,10 @@ import { BuscarporautorComponent } from './components/articulo/buscarporautor/bu
 import { MiPerfil } from './components/mi-perfil/mi-perfil';
 import { Filtrobusquedaporidyfecha } from './components/disponibilidad/filtrobusquedaporidyfecha/filtrobusquedaporidyfecha';
 import { Filtrobusquedausuarioyfecha } from './components/archivo/filtrobusquedausuarioyfecha/filtrobusquedausuarioyfecha';
+import { Buscarmensaje } from './components/usuario/buscarmensaje/buscarmensaje';
+import { Buscarcontenido } from './components/mensaje/buscarcontenido/buscarcontenido';
+import { Contarasesoria } from './components/asesoria/contarasesoria/contarasesoria';
+import { Consultarformatoarchivo } from './components/formatoarchivo/consultarformatoarchivo/consultarformatoarchivo';
 
 
 export const routes: Routes = [
@@ -84,7 +88,8 @@ export const routes: Routes = [
     children: [
       { path: 'nuevo', component: Insertareditarusuario },
       { path: 'ediciones/:id', component: Insertareditarusuario },
-      { path: 'listarsinpassword', component: Listausariossinpassword }
+      { path: 'listarsinpassword', component: Listausariossinpassword },
+      { path: 'BuscarMensaje', component: Buscarmensaje}
     ],
     //canActivate: [seguridadGuard],
     //data: { roles: ['DESARROLLADOR','ADMIN'] },
@@ -153,6 +158,10 @@ export const routes: Routes = [
       { path: 'ediciones/:id', component: Insertareditar,
          canActivate: [seguridadGuard],
     data: { roles: ['DESARROLLADOR','ADMIN'] },
+       },
+       { path: 'FormatosDocx', component: Consultarformatoarchivo,
+         canActivate: [seguridadGuard],
+    data: { roles: ['DESARROLLADOR','ADMIN','ESTUDIANTESUPERIOR','ESTUDIANTEINFERIOR'] },
        }
     ]
   },
@@ -175,6 +184,11 @@ export const routes: Routes = [
       { path: 'chat/:id/:nombreAsesoria', component: ChatAsesoria,
         canActivate: [seguridadGuard],
     data: { roles: ['DESARROLLADOR','ADMIN','ESTUDIANTESUPERIOR','ESTUDIANTEINFERIOR'] },
+       },
+       {
+        path:'ContarAsesoriasPorFecha', component: Contarasesoria,
+        canActivate: [seguridadGuard],
+        data: { roles: ['DESARROLLADOR','ADMIN','ESTUDIANTESUPERIOR','ESTUDIANTEINFERIOR'] },
        }
     ]
   },
@@ -211,7 +225,8 @@ export const routes: Routes = [
       { path: 'ediciones/:id', component: Insertareditarmensaje,
          canActivate: [seguridadGuard],
     data: { roles: ['DESARROLLADOR','ADMIN'] },
-       }
+       },
+       { path: 'BuscarContenido', component: Buscarcontenido }
     ]
   },
 

@@ -20,17 +20,15 @@ import { BuscarContenidoDTO } from '../../../models/BuscarContenidoDTO';
   styleUrl: './buscarcontenido.css'
 })
 export class Buscarcontenido {
-  public contenidoBusqueda: string = "";
 
   displayedColumns: string[] = ['c1', 'c2'];
-  dataSource: MatTableDataSource<BuscarContenidoDTO> = new MatTableDataSource();
+  dataSource = new MatTableDataSource<BuscarContenidoDTO>();
+
   constructor(private mS: MensajeService) {}
   
-  buscar(): void {
-    if (this.contenidoBusqueda.trim()) {
-      this.mS.buscarContenido(this.contenidoBusqueda).subscribe(data => {
-        this.dataSource.data = data; 
-      });
-    }
+  cargarMensajes(): void {
+    this.mS.buscarContenido().subscribe(data => {
+      this.dataSource.data = data; 
+    });
   }
 }
