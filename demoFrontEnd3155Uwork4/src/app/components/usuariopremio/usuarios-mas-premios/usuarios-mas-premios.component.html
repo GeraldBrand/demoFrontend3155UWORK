@@ -1,0 +1,48 @@
+<div class="container mt-4">
+  <h3 class="mb-3">
+    🏆 Usuarios con más de <strong>{{ cantidad || 'N' }}</strong> premios
+  </h3>
+
+  <div class="form-inline mb-3">
+    <label for="cantidad" class="mr-2">🔢 Cantidad mínima:</label>
+    <input
+      type="number"
+      id="cantidad"
+      [(ngModel)]="cantidad"
+      class="form-control mr-2"
+      placeholder="Ej: 2"
+      min="1"
+    />
+    <button class="btn btn-primary" (click)="buscar()">🔍 Buscar</button>
+  </div>
+
+  <!-- Mensaje de error -->
+  <div *ngIf="error" class="alert alert-danger">
+    ❌ {{ error }}
+  </div>
+
+  <!-- Tabla de resultados -->
+  <div *ngIf="usuarios.length > 0">
+    <table class="table table-hover table-bordered">
+      <thead class="thead-dark text-center">
+        <tr>
+          <th>#️⃣</th>
+          <th>👤 Nombre de Usuario</th>
+          <th>🏅 Cantidad de Premios</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let u of usuarios; let i = index" class="text-center">
+          <td>{{ i + 1 }}</td>
+          <td>{{ u.nombreUsuario }}</td>
+          <td>🎖️ {{ u.cantidadPremios }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Sin resultados -->
+  <div *ngIf="usuarios.length === 0 && !error" class="alert alert-info">
+    ℹ️ No se encontraron usuarios con más de {{ cantidad }} premios.
+  </div>
+</div>

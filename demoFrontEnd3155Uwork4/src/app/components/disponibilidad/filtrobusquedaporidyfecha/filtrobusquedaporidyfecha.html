@@ -1,0 +1,43 @@
+<br>
+<br>
+
+
+<h2>🔎 Buscar Disponibilidades por Usuario y Fecha</h2>
+
+<form (ngSubmit)="buscar()">
+  <!-- Selector de usuario -->
+  <mat-form-field appearance="fill">
+    <mat-label>Selecciona Usuario</mat-label>
+    <mat-select [(ngModel)]="idUsuario" name="idUsuario" required>
+      <mat-option *ngFor="let u of listaUsuarios" [value]="u.idUsuario">
+        {{ u.username }} (ID {{ u.idUsuario }})
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <!-- Fecha -->
+  <mat-form-field appearance="fill">
+    <mat-label>Fecha</mat-label>
+    <input matInput [matDatepicker]="picker" [(ngModel)]="fechaSeleccionada" name="fecha" required>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit">Buscar</button>
+</form>
+
+<!-- Lista resultados -->
+<div *ngIf="disponibilidades.length > 0">
+  <h3>🗓️ Disponibilidades encontradas:</h3>
+  <ul>
+    <li *ngFor="let d of disponibilidades">
+      <strong>{{ d.fechaDisponibilidad | date }}</strong> |
+      De {{ d.horaInicio }} a {{ d.horaFin }} |
+      Usuario: {{ d.usuario.username || 'ID ' + d.usuario.idUsuario }}
+    </li>
+  </ul>
+</div>
+
+<div *ngIf="buscado && disponibilidades.length === 0">
+  <p>⚠️ No se encontraron disponibilidades para ese usuario y fecha.</p>
+</div>

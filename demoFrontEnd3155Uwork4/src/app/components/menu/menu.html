@@ -183,6 +183,8 @@
 <mat-menu #menuformatoarchivos="matMenu">
   <button mat-menu-item routerLink="/formatoarchivos">Listar</button>
   <button mat-menu-item routerLink="/formatoarchivos/nuevo">Registrar</button>
+  <button mat-menu-item *ngIf="isLoggedIn()" routerLink="/formatoarchivos/FormatosDocx"> Consultar formato de archivos subidos con extensión ".docx" </button>
+  
 </mat-menu>
 
 <mat-menu #menuRol="matMenu">
@@ -198,16 +200,19 @@
 <mat-menu #menuUsuario="matMenu">
   <button mat-menu-item routerLink="/usuarios">Listar</button>
   <button mat-menu-item routerLink="/usuarios/nuevo">Registrar</button>
+  <button mat-menu-item *ngIf="isLoggedIn()" routerLink="/usuarios/BuscarMensaje"> Cantidad de asesorías agrupadas por fecha </button>
 </mat-menu>
 
 <mat-menu #menuAsesoria="matMenu">
   <button mat-menu-item routerLink="/asesorias">Listar</button>
   <button mat-menu-item *ngIf="rolUsuarioActual() === 'ADMIN' || rolUsuarioActual() === 'DESARROLLADOR'" routerLink="/asesorias/nuevo">Registrar</button>
+  <button mat-menu-item *ngIf="isLoggedIn()" routerLink="/asesorias/ContarAsesoriasPorFecha"> Cantidad de asesorías agrupadas por fecha </button>
 </mat-menu>
 
 <mat-menu #menuMensaje="matMenu">
   <button mat-menu-item routerLink="/mensajes">Listar</button>
   <button mat-menu-item routerLink="/mensajes/nuevo">Registrar</button>
+  <button mat-menu-item *ngIf="isLoggedIn()" routerLink="/mensajes/BuscarContenido"> Búsqueda de contenido de mensajes recibidos por estudiantes de ciclo inferior </button>
 </mat-menu>
 
 <mat-menu #menuValoracion="matMenu">
@@ -227,9 +232,11 @@
 <mat-menu #menuDisponibilidades="matMenu">
   <button mat-menu-item *ngIf="rolUsuarioActual() === 'ADMIN' || rolUsuarioActual() === 'DESARROLLADOR' || rolUsuarioActual() === 'ESTUDIANTESUPERIOR' || rolUsuarioActual() === 'ESTUDIANTEINFERIOR'" routerLink="/disponibilidades">Listar</button>
   <button mat-menu-item *ngIf="rolUsuarioActual() === 'ADMIN' || rolUsuarioActual() === 'DESARROLLADOR' || rolUsuarioActual() === 'ESTUDIANTESUPERIOR'"routerLink="/disponibilidades/nuevo">Registrar</button>
+   <button mat-menu-item *ngIf="rolUsuarioActual() === 'ADMIN' || rolUsuarioActual() === 'DESARROLLADOR' || rolUsuarioActual() === 'ESTUDIANTESUPERIOR' || rolUsuarioActual() === 'ESTUDIANTEINFERIOR'" routerLink="/disponibilidades/filtroIDyFecha">Filtro Asesor y Fecha</button>
 </mat-menu>
 
 <mat-menu #menuArchivos="matMenu">
   <button mat-menu-item routerLink="/archivos">Listar</button>
   <button mat-menu-item routerLink="/archivos/nuevo">Registrar</button>
+     <button mat-menu-item *ngIf="rolUsuarioActual() === 'ADMIN' || rolUsuarioActual() === 'DESARROLLADOR' || rolUsuarioActual() === 'ESTUDIANTESUPERIOR' || rolUsuarioActual() === 'ESTUDIANTEINFERIOR'" routerLink="/archivos/filtrousuarioyfecha">Filtro Estudiante y Fecha</button>
 </mat-menu>
