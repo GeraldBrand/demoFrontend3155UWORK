@@ -58,4 +58,8 @@ export class ArchivoService {
   listarPorAsesoria(id: number) {
   return this.h.get<Archivo[]>(`${this.url}/asesoria/${id}`);
 }
+
+buscarPorUsuarioYFecha(id: number, fecha: string) {
+  return this.h.get<Archivo[]>(`${this.url}/usuario/${id}/fecha/${fecha}`);
+}
 }

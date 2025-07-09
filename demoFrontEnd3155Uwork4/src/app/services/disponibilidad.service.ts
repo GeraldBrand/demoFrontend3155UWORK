@@ -46,5 +46,10 @@ export class DisponibilidadService{
     return this.h.delete(`${this.url}/${id}`)
   }
 
+  buscarPorUsuarioYFecha(idUsuario: number, fecha: string) {
+  return this.h.get<Disponibilidad[]>(`${this.url}/usuario/${idUsuario}/fecha/${fecha}`);
+}
+
+
 }
 

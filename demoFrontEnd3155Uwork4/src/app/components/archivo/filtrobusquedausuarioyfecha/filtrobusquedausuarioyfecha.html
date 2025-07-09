@@ -1,0 +1,41 @@
+<br>
+<br>
+<br>
+
+<h2>📁 Buscar Archivos por Usuario y Fecha</h2>
+
+<form (ngSubmit)="buscar()">
+  <mat-form-field appearance="fill">
+    <mat-label>Seleccionar Usuario</mat-label>
+    <mat-select [(ngModel)]="idUsuario" name="idUsuario" required>
+      <mat-option *ngFor="let u of usuarios" [value]="u.idUsuario">
+        {{ u.username }} (ID: {{ u.idUsuario }})
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Fecha de subida</mat-label>
+    <input matInput [matDatepicker]="picker" [(ngModel)]="fechaSeleccionada" name="fecha" required>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit">Buscar</button>
+</form>
+
+<!-- Resultados -->
+<div *ngIf="buscado && archivos.length > 0">
+  <h3>🧾 Archivos encontrados:</h3>
+  <ul>
+    <li *ngFor="let a of archivos">
+      {{ a.nombreArchivo }} |
+      Subido el: {{ a.fechaSubida | date:'longDate' }} |
+      Usuario: {{ a.usuario.username || 'ID ' + a.usuario.idUsuario }}
+    </li>
+  </ul>
+</div>
+
+<div *ngIf="buscado && archivos.length === 0">
+  <p>⚠️ No se encontraron archivos para ese usuario y fecha.</p>
+</div>
