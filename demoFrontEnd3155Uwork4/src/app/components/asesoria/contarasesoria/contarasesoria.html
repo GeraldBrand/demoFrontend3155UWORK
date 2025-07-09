@@ -1,0 +1,31 @@
+
+<div class="container">
+  <div style="text-align: center; margin: 5%">
+    <h1>📊 Reporte - Cantidad de Asesorías por Fecha</h1>
+  </div>
+
+  <div style="text-align: center; margin: 2% 5%">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+      <ng-container matColumnDef="c1">
+        <th mat-header-cell *matHeaderCellDef>📅 Fecha de Asesoría</th>
+        <td mat-cell *matCellDef="let element">{{ element.fechaAsesoria }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="c2">
+        <th mat-header-cell *matHeaderCellDef>#️⃣ Cantidad de Asesorías</th>
+        <td mat-cell *matCellDef="let element">{{ element.cantidad }}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+
+    <mat-paginator
+      [pageSizeOptions]="[5, 10, 25, 100]"
+      showFirstLastButtons
+      aria-label="Seleccionar página de resultados"
+    >
+    </mat-paginator>
+  </div>
+</div>

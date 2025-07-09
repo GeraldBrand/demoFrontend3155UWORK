@@ -3,6 +3,7 @@ import { environment } from '../../environments/environment';
 import { Subject } from 'rxjs';
 import { Asesoria } from '../models/Asesoria';
 import { HttpClient } from '@angular/common/http';
+import { ContarAsesoriaDTO } from '../models/ContarAsesoriaDTO';
 
 const base_url = environment.base;
 @Injectable({
@@ -39,5 +40,7 @@ export class AsesoriaService {
     listarPorUsuario(idUsuario: number) {
     return this.http.get<Asesoria[]>(`${this.url}/usuario/${idUsuario}`);
     }
-
+    contarAsesoria(){
+      return this.http.get<ContarAsesoriaDTO[]>(`${this.url}/ContarAsesoriasPorFecha`)
+    }
 }

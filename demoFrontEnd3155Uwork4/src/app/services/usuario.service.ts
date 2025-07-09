@@ -3,6 +3,8 @@ import { environment } from '../../environments/environment';
 import { Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Usuario } from '../models/Usuario';
+import { BuscarContenidoDTO } from '../models/BuscarContenidoDTO';
+import { ContenidoFechaDTO } from '../models/ContenidoFechaDTO';
 
 
 const base_url = environment.base;
@@ -35,5 +37,8 @@ export class UsuarioService {
   }
   deleteU(id:number) {
     return this.http.delete(`${this.url}/${id}`);
+  }
+  buscarMensaje(idUsuario: number){
+    return this.http.get<ContenidoFechaDTO[]>(`${this.url}/BuscarMensaje?id_usuario=${idUsuario}`)
   }
 }
