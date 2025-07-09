@@ -34,5 +34,10 @@ export class PremioServices {
   deleteP(id:number) {
     return this.http.delete(`${this.url}/${id}`);
   }
+
+  buscarPorNombre(keyword: string) {
+  return this.http.get<Premio[]>(`${this.url}/buscar?keyword=${keyword}`);
+}
+
 }
 
