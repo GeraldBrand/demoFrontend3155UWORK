@@ -37,6 +37,8 @@ import { Login } from './components/login/login';
 import { Chat } from './components/chat/chat';
 import { BuscarporautorComponent } from './components/articulo/buscarporautor/buscarporautor';
 import { MiPerfil } from './components/mi-perfil/mi-perfil';
+import { Filtrobusquedaporidyfecha } from './components/disponibilidad/filtrobusquedaporidyfecha/filtrobusquedaporidyfecha';
+import { Filtrobusquedausuarioyfecha } from './components/archivo/filtrobusquedausuarioyfecha/filtrobusquedausuarioyfecha';
 
 
 export const routes: Routes = [
@@ -248,6 +250,11 @@ export const routes: Routes = [
       { path: 'ediciones/:id', component: Insertareditardisponibilidad,
         canActivate: [seguridadGuard],
     data: { roles: ['DESARROLLADOR','ADMIN','ESTUDIANTESUPERIOR'] },
+       },
+       {
+        path: 'filtroIDyFecha', component: Filtrobusquedaporidyfecha,
+        canActivate: [seguridadGuard],
+        data: { roles: ['DESARROLLADOR','ADMIN','ESTUDIANTESUPERIOR','ESTUDIANTEINFERIOR'] },
        }
     ]
   },
@@ -266,6 +273,11 @@ export const routes: Routes = [
       { path: 'ediciones/:id', component: Insertareditararchivo,
         canActivate: [seguridadGuard],
     data: { roles: ['DESARROLLADOR','ADMIN'] },
+       },
+       {
+        path:'filtrousuarioyfecha', component: Filtrobusquedausuarioyfecha,
+        canActivate: [seguridadGuard],
+        data: { roles: ['DESARROLLADOR','ADMIN','ESTUDIANTESUPERIOR','ESTUDIANTEINFERIOR'] },
        }
     ]
   },

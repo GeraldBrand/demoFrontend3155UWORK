@@ -227,9 +227,11 @@
 <mat-menu #menuDisponibilidades="matMenu">
   <button mat-menu-item *ngIf="rolUsuarioActual() === 'ADMIN' || rolUsuarioActual() === 'DESARROLLADOR' || rolUsuarioActual() === 'ESTUDIANTESUPERIOR' || rolUsuarioActual() === 'ESTUDIANTEINFERIOR'" routerLink="/disponibilidades">Listar</button>
   <button mat-menu-item *ngIf="rolUsuarioActual() === 'ADMIN' || rolUsuarioActual() === 'DESARROLLADOR' || rolUsuarioActual() === 'ESTUDIANTESUPERIOR'"routerLink="/disponibilidades/nuevo">Registrar</button>
+   <button mat-menu-item *ngIf="rolUsuarioActual() === 'ADMIN' || rolUsuarioActual() === 'DESARROLLADOR' || rolUsuarioActual() === 'ESTUDIANTESUPERIOR' || rolUsuarioActual() === 'ESTUDIANTEINFERIOR'" routerLink="/disponibilidades/filtroIDyFecha">Filtro Asesor y Fecha</button>
 </mat-menu>
 
 <mat-menu #menuArchivos="matMenu">
   <button mat-menu-item routerLink="/archivos">Listar</button>
   <button mat-menu-item routerLink="/archivos/nuevo">Registrar</button>
+     <button mat-menu-item *ngIf="rolUsuarioActual() === 'ADMIN' || rolUsuarioActual() === 'DESARROLLADOR' || rolUsuarioActual() === 'ESTUDIANTESUPERIOR' || rolUsuarioActual() === 'ESTUDIANTEINFERIOR'" routerLink="/archivos/filtrousuarioyfecha">Filtro Asesor y Fecha</button>
 </mat-menu>
