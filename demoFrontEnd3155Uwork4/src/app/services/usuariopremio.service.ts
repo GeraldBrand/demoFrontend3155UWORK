@@ -3,6 +3,7 @@ import { environment } from '../../environments/environment';
 import { Subject } from 'rxjs';
 import { UsuarioPremio } from '../models/UsuarioPremio';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 const base_url = environment.base;
 @Injectable({
@@ -34,5 +35,9 @@ export class UsuariopremioService {
   }
   deleteUP(id:number) {
     return this.http.delete(`${this.url}/${id}`);
+  }
+
+    listarUsuariosConMasDeNPremios(n: number): Observable<any[]> {
+    return this.http.get<any[]>(`${base_url}/usuariopremio/mas-de-n-premios?n=${n}`);
   }
 }

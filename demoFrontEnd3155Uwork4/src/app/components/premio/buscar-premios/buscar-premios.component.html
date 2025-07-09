@@ -1,43 +1,45 @@
 <div class="container mt-4">
-  <h3 class="mb-3">Buscar premios por nombre</h3>
+  <h3 class="mb-3">🔍 Buscar premios por nombre</h3>
 
-  <div class="row mb-3">
+  <div class="row mb-3 align-items-center">
     <div class="col-md-6">
       <input
         type="text"
         [(ngModel)]="keyword"
-        placeholder="Escribe una palabra clave"
+        placeholder="💬 Escribe una palabra clave"
         class="form-control"
       />
     </div>
-    <div class="col-md-6">
-      <button class="btn btn-primary me-2" (click)="buscar()">Buscar</button>
-      <button class="btn btn-secondary" (click)="limpiar()">Limpiar</button>
+    <div class="col-md-6 d-flex">
+      <button class="btn btn-primary me-2" (click)="buscar()">🔍 Buscar</button>
+      <button class="btn btn-secondary" (click)="limpiar()">🧹 Limpiar</button>
     </div>
   </div>
 
+  <!-- Resultados encontrados -->
   <div *ngIf="resultados.length > 0">
     <table class="table table-striped table-bordered">
-      <thead class="table-dark">
+      <thead class="table-dark text-center">
         <tr>
-          <th>ID</th>
-          <th>Categoría</th>
-          <th>Nombre</th>
-          <th>Puntos</th>
+          <th>🆔 ID</th>
+          <th>📁 Categoría</th>
+          <th>🏷️ Nombre</th>
+          <th>⭐ Puntos</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let premio of resultados">
+        <tr *ngFor="let premio of resultados" class="text-center">
           <td>{{ premio.id }}</td>
           <td>{{ premio.categoria }}</td>
           <td>{{ premio.nombrePrem }}</td>
-          <td>{{ premio.puntos }}</td>
+          <td>🎖️ {{ premio.puntos }}</td>
         </tr>
       </tbody>
     </table>
   </div>
 
-<div *ngIf="busquedaRealizada && resultados.length === 0">
-  <p class="alert alert-warning">No se encontraron premios con esa palabra clave.</p>
+  <!-- Sin resultados -->
+  <div *ngIf="busquedaRealizada && resultados.length === 0">
+    <p class="alert alert-warning">⚠️ No se encontraron premios con esa palabra clave.</p>
+  </div>
 </div>
-

@@ -115,6 +115,14 @@ export const routes: Routes = [
          canActivate: [seguridadGuard],
     data: { roles: ['DESARROLLADOR','ADMIN'] }
        },
+           {
+      path: 'mas-de-n-premios',
+      loadComponent: () => import('./components/usuariopremio/usuarios-mas-premios/usuarios-mas-premios.component')
+        .then(c => c.UsuariosMasPremiosComponent),
+      canActivate: [seguridadGuard],
+      data: { roles: ['DESARROLLADOR', 'ADMIN'] }
+    }
+       
     ]
   },
 
